@@ -12,7 +12,10 @@ public class SetDemo
 		// testIsSuperset();
 		// testSetConstructor();
 		// testEquals();
-		testUnion();
+		// testUnion();
+		// testIntersection();
+		// testDifference();
+		// testSymmetricDifference();
 	}
 
 	public static void testNoArgConstructor()
@@ -136,6 +139,65 @@ public class SetDemo
 		Set a = new Set(new int[] {1, 3, 5, 7, 9});
 		Set b = new Set(new int[] {3, 4, 5, 6, 7});
 		System.out.println("The union of " + a + " and " + b + " is...");
-		System.out.println(Set.union(a,b));
+		System.out.println("static: " + Set.union(a,b));
+		System.out.println("instance a: " + a.union(b));
+		System.out.println("instance b: " + b.union(a));
+		System.out.println("Are the three sets above equal? " +
+			Set.union(a,b).equals(a.union(b)) + "\t" +
+			Set.union(a,b).equals(b.union(a)) + "\t" +
+			a.union(b).equals(b.union(a)));
+	}
+
+	public static void testIntersection()
+	{
+		System.out.println("Testing Set.intersection(Set, Set)");
+		Set a = new Set(new int[] {1, 3, 5, 7, 9});
+		Set b = new Set(new int[] {3, 4, 5, 6, 7});
+		System.out.println("The intersection of " + a + " and " + b + " is...");
+		System.out.println("Static: " + Set.intersection(a,b));
+		System.out.println("Instance a " + a.intersection(b));
+		System.out.println("Instance b " + b.intersection(a));
+		System.out.println("Are the three sets above equal? " +
+			Set.intersection(a,b).equals(a.intersection(b)) + "\t" +
+			Set.intersection(a,b).equals(b.intersection(a)) + "\t" +
+			a.intersection(b).equals(b.intersection(a)));
+	}
+
+	public static void testDifference()
+	{
+		System.out.println("Testing Set.difference(Set, Set)");
+		Set a = new Set(new int[] {1, 3, 5, 7, 9});
+		Set b = new Set(new int[] {3, 4, 5, 6, 7});
+		System.out.println("The difference of " + a + " and " + b + " is...");
+		System.out.println(Set.difference(a,b));
+
+		System.out.println("The difference of " + b + " and " + a + " is...");
+		System.out.println(Set.difference(b,a));
+	}
+
+	public static void testSymmetricDifference()
+	{
+		System.out.println("Testing Set.symmetricDifference(Set, Set)");
+		Set a = new Set(new int[] {1, 3, 5, 7, 9});
+		Set b = new Set(new int[] {3, 4, 5, 6, 7});
+		System.out.println("The symmetric difference of " + a +
+						   " and " + b + " is...");
+		System.out.println(Set.symmetricDifference(a,b));
+
+		System.out.println("The symmetric difference of " + b +
+						   " and " + a + " is...");
+		System.out.println("Static: " + Set.symmetricDifference(b,a));
+		System.out.println("Calling on a: " + a.symmetricDifference(b));
+		System.out.println("Calling on b: " + b.symmetricDifference(a));
+
+		System.out.println("Are these the same?" +
+			"\nstatic: " +
+			Set.symmetricDifference(a,b).equals(Set.symmetricDifference(b,a)) +
+			"\ninstance: " +
+			a.symmetricDifference(b).equals(b.symmetricDifference(a)) +
+			"\nstatic and instance a: " +
+			Set.symmetricDifference(a,b).equals(a.symmetricDifference(b)) +
+			"\nstatic and instance b: " +
+			Set.symmetricDifference(a,b).equals(b.symmetricDifference(a)));
 	}
 }

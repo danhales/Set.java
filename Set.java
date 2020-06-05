@@ -1,3 +1,9 @@
+/**
+ * The purpose of this class is to reinvent the wheel a bit for students in
+ * Advanced Placement Computer Science A.
+ *
+ */
+
 import java.util.ArrayList;
 
 public class Set
@@ -162,6 +168,66 @@ public class Set
 	}
 
 	/**
+		static method for taking the difference left - right
+		returns only the values in left that are not in right.
+		@param left a Set object
+		@param right a Set object
+		@return a Set object containing the values in left that are
+				not also in right
+	*/
+	public static Set difference(Set left, Set right)
+	{
+		Set intersection = Set.intersection(left, right);
+		Set diff = new Set();
+
+		for (Integer element : left.set)
+		{
+			if (!intersection.contains(element))
+			{
+				diff.add(element);
+			}
+		}
+
+		return diff;
+	}
+
+	/**
+		instance method for taking the difference this - other
+		@param other a Set object
+		@return a Set object containing all of the elements in this.set that
+				are not in other.set
+	*/
+	public Set difference(Set other)
+	{
+		return Set.difference(this, other);
+	}
+
+	/**
+		static method for taking the symmetric difference of setA and setB.
+		this method returns the elements that are in only setA or only setB.
+		@param setA a Set object
+		@param setB a Set object
+		@return a Set object containing elements unique to setA or unique to
+				setB
+	*/
+	public static Set symmetricDifference(Set setA, Set setB)
+	{
+		return Set.difference(Set.union(setA, setB),
+							  Set.intersection(setA, setB));
+	}
+
+	/**
+		instance method for taking the symmetric difference of this and other
+		@param other a Set object
+		@return a Set object containing elements unique to this or unique to
+				other
+	*/
+	public Set symmetricDifference(Set other)
+	{
+		return Set.symmetricDifference(this, other);
+	}
+
+	/**
 		static method for taking the intersection of two sets.
 		returns a Set of elements that are in BOTH setA AND setB.
 		@param setA a Set object
@@ -174,11 +240,24 @@ public class Set
 
 		for (Integer element : setA.set)
 		{
-			if setB.contains(element)
+			if (setB.contains(element))
+			{
 				setIntersection.add(element);
+			}
 		}
 
 		return setIntersection;
+	}
+
+	/**
+		instance method for taking the intersection of this and other.
+		returns a set containing only the elements in this and other.
+		@param other a Set object
+		@return a Set object containing only the elements in both sets.
+	*/
+	public Set intersection(Set other)
+	{
+		return Set.intersection(this, other);
 	}
 
 	/**
@@ -205,6 +284,17 @@ public class Set
 		}
 
 		return setUnion;
+	}
+
+	/**
+		instance method for taking the union of this and other.
+		returns a Set that contains all elements in this and other.
+		@param other a Set object
+		@return a Set object containing all elements in this, other, or both.
+	*/
+	public Set union(Set other)
+	{
+		return Set.union(this, other);
 	}
 
 	/**
