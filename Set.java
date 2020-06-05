@@ -102,6 +102,41 @@ public class Set
 	}
 
 	/**
+		static method for taking the difference left - right
+		returns only the values in left that are not in right.
+		@param left a Set object
+		@param right a Set object
+		@return a Set object containing the values in left that are
+				not also in right
+	*/
+	public static Set difference(Set left, Set right)
+	{
+		Set intersection = Set.intersection(left, right);
+		Set diff = new Set();
+
+		for (Integer element : left.set)
+		{
+			if (!intersection.contains(element))
+			{
+				diff.add(element);
+			}
+		}
+
+		return diff;
+	}
+
+	/**
+		instance method for taking the difference this - other
+		@param other a Set object
+		@return a Set object containing all of the elements in this.set that
+				are not in other.set
+	*/
+	public Set difference(Set other)
+	{
+		return Set.difference(this, other);
+	}
+
+	/**
 		removes an element from the set if it is a member.
 		this method has no effect if the element is not present.
 	*/
@@ -127,6 +162,39 @@ public class Set
 	public boolean equals(Set other)
 	{
 		return this.isSubset(other) && other.isSubset(this);
+	}
+
+	/**
+		static method for taking the intersection of two sets.
+		returns a Set of elements that are in BOTH setA AND setB.
+		@param setA a Set object
+		@param setB a Set object
+		@return a set containing only elements in both setA and setB
+	*/
+	public static Set intersection(Set setA, Set setB)
+	{
+		Set setIntersection = new Set();
+
+		for (Integer element : setA.set)
+		{
+			if (setB.contains(element))
+			{
+				setIntersection.add(element);
+			}
+		}
+
+		return setIntersection;
+	}
+
+	/**
+		instance method for taking the intersection of this and other.
+		returns a set containing only the elements in this and other.
+		@param other a Set object
+		@return a Set object containing only the elements in both sets.
+	*/
+	public Set intersection(Set other)
+	{
+		return Set.intersection(this, other);
 	}
 
 	/**
@@ -168,41 +236,6 @@ public class Set
 	}
 
 	/**
-		static method for taking the difference left - right
-		returns only the values in left that are not in right.
-		@param left a Set object
-		@param right a Set object
-		@return a Set object containing the values in left that are
-				not also in right
-	*/
-	public static Set difference(Set left, Set right)
-	{
-		Set intersection = Set.intersection(left, right);
-		Set diff = new Set();
-
-		for (Integer element : left.set)
-		{
-			if (!intersection.contains(element))
-			{
-				diff.add(element);
-			}
-		}
-
-		return diff;
-	}
-
-	/**
-		instance method for taking the difference this - other
-		@param other a Set object
-		@return a Set object containing all of the elements in this.set that
-				are not in other.set
-	*/
-	public Set difference(Set other)
-	{
-		return Set.difference(this, other);
-	}
-
-	/**
 		static method for taking the symmetric difference of setA and setB.
 		this method returns the elements that are in only setA or only setB.
 		@param setA a Set object
@@ -225,39 +258,6 @@ public class Set
 	public Set symmetricDifference(Set other)
 	{
 		return Set.symmetricDifference(this, other);
-	}
-
-	/**
-		static method for taking the intersection of two sets.
-		returns a Set of elements that are in BOTH setA AND setB.
-		@param setA a Set object
-		@param setB a Set object
-		@return a set containing only elements in both setA and setB
-	*/
-	public static Set intersection(Set setA, Set setB)
-	{
-		Set setIntersection = new Set();
-
-		for (Integer element : setA.set)
-		{
-			if (setB.contains(element))
-			{
-				setIntersection.add(element);
-			}
-		}
-
-		return setIntersection;
-	}
-
-	/**
-		instance method for taking the intersection of this and other.
-		returns a set containing only the elements in this and other.
-		@param other a Set object
-		@return a Set object containing only the elements in both sets.
-	*/
-	public Set intersection(Set other)
-	{
-		return Set.intersection(this, other);
 	}
 
 	/**
