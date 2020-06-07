@@ -1,12 +1,12 @@
 /**
- * The purpose of this class is to reinvent the wheel a bit for students in
- * Advanced Placement Computer Science A.
- *
+ * The Set class is capable of holding an unordered collection of unique
+ * whole numbers.
  */
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class Set
+public class Set implements Iterable<Integer>
 {
 	// we will store our values here
 	private ArrayList<Integer> set;
@@ -66,21 +66,8 @@ public class Set
 	*/
 	public void add(int new_value)
 	{
-		// a flag variable
-		boolean found = false;
-
-		for (Integer element : set)
-		{
-			if (element == new_value)
-			{
-				found = true;
-			}
-		}
-
-		if (!found)
-		{
-			set.add(new_value);
-		}
+		if (!contains(new_value))
+			set.add((int)(Math.random()*size()), new_value);
 	}
 
 	/**
@@ -90,15 +77,7 @@ public class Set
 	*/
 	public boolean contains(int value)
 	{
-		for (Integer element: set)
-		{
-			if (element == value)
-			{
-				return true;
-			}
-		}
-
-		return false;
+		return set.contains(value);
 	}
 
 	/**
@@ -233,6 +212,34 @@ public class Set
 		}
 
 		return true;
+	}
+
+	/**
+		Allows us to iterate over the set, and gain access to individual
+		elements.
+	*/
+	@Override
+	public Iterator<Integer> iterator()
+	{
+		return set.iterator();
+	}
+
+	/**
+		pop removes and returns a random element from the set.
+		@return an element from the set
+	*/
+	public int pop()
+	{
+		return set.remove((int)(Math.random() * set.size()));
+	}
+
+	/**
+		size method returns the size of the set.
+		@return the number of elements in the set
+	*/
+	public int size()
+	{
+		return set.size();
 	}
 
 	/**

@@ -16,6 +16,9 @@ public class SetDemo
 		// testIntersection();
 		// testDifference();
 		// testSymmetricDifference();
+		// testSize();
+		// testPop();
+		// testIterator();
 	}
 
 	public static void testNoArgConstructor()
@@ -199,5 +202,50 @@ public class SetDemo
 			Set.symmetricDifference(a,b).equals(a.symmetricDifference(b)) +
 			"\nstatic and instance b: " +
 			Set.symmetricDifference(a,b).equals(b.symmetricDifference(a)));
+	}
+
+	public static void testPop()
+	{
+		Set s = new Set();
+
+		// add some elements
+		for (int i = 0; i < 10; i++)
+		{
+			s.add((int)(Math.random() * 10));
+		}
+
+		// remove all elements
+		while (s.size() > 0)
+		{
+			System.out.println("List before popping: " + s);
+			System.out.println("Removed " + s.pop());
+			System.out.println("List after popping: " + s + "\n");
+		}
+
+		// try to remove another element
+		System.out.print("Removing another element: ");
+		System.out.println(s.pop());
+	}
+
+	public static void testSize()
+	{
+		Set s = new Set();
+
+		for (int i = 0; i < 10; i++)
+		{
+			s.add((int)(Math.random() * 10));
+			System.out.println(s + " contains " + s.size() + " elements");
+		}
+	}
+
+	public static void testIterator()
+	{
+		Set s = new Set();
+
+		for (int i = 0; i < 10; i++)
+			s.add((int)(Math.random() * 10));
+
+		for (int item: s)
+			System.out.println(item);
 	}
 }
