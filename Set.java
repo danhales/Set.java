@@ -90,12 +90,11 @@ public class Set implements Iterable<Integer>
 	*/
 	public static Set difference(Set left, Set right)
 	{
-		Set intersection = Set.intersection(left, right);
 		Set diff = new Set();
 
 		for (Integer element : left)
 		{
-			if (!intersection.contains(element))
+			if (!right.contains(element))
 			{
 				diff.add(element);
 			}
