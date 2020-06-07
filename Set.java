@@ -93,7 +93,7 @@ public class Set implements Iterable<Integer>
 		Set intersection = Set.intersection(left, right);
 		Set diff = new Set();
 
-		for (Integer element : left.set)
+		for (Integer element : left)
 		{
 			if (!intersection.contains(element))
 			{
@@ -154,7 +154,7 @@ public class Set implements Iterable<Integer>
 	{
 		Set setIntersection = new Set();
 
-		for (Integer element : setA.set)
+		for (Integer element : setA)
 		{
 			if (setB.contains(element))
 			{
@@ -185,7 +185,6 @@ public class Set implements Iterable<Integer>
 	{
 		for (Integer element : set)
 		{
-			// if any element in this set is not found in the other set
 			if (!other.contains(element))
 			{
 				return false;
@@ -202,7 +201,7 @@ public class Set implements Iterable<Integer>
 	*/
 	public boolean isSuperset(Set other)
 	{
-		for (Integer element : other.set)
+		for (Integer element : other)
 		{
 			// if any element in this set is not found in the other set
 			if (!this.contains(element))
@@ -278,14 +277,12 @@ public class Set implements Iterable<Integer>
 	{
 		Set setUnion = new Set();
 
-		// add all the elements of setA
-		for (Integer element : setA.set)
+		for (Integer element : setA)
 		{
 			setUnion.add(element);
 		}
 
-		// add all the elements of setB
-		for (Integer element: setB.set)
+		for (Integer element: setB)
 		{
 			setUnion.add(element);
 		}
